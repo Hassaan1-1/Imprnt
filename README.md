@@ -1,2 +1,1 @@
-# Imprnt
-Imprnt is a modern sportswear and lifestyle brand created for people who want their style to stand out and leave a lasting mark. The name itself represents the idea of making an impression  wearing something that reflects confidence, individuality, and a strong personality
+Imprnt is a modern sportswear and lifestyle brand created for those who want their style to stand out and leave a lasting mark. The name represents the idea of making an impression through apparel that reflects confidence, individuality, and a strong personality. At Imprnt, we believe your gear should be as bold as your ambition.
