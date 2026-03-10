@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="gvGrIDs6cDq4jcq_AkRHkeLangqxUlOjRmnEE32tDoc" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprnt - Premium Fashion | Sialkot, Pakistan</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --gold: #ffd700;
+            --text: #eaeaea;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-icons i {
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            color: var(--text);
+        }
+
+        .nav-icons i:hover {
+            transform: scale(1.2);
+            color: var(--accent);
+        }
+
+        .cart-count {
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            position: relative;
+            top: -10px;
+            left: -5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            background: linear-gradient(135deg, rgba(26,26,46,0.8), rgba(22,33,62,0.9)), 
+                        url('https://images.unsplash.com/photo-1556906781-9a412961c28c?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        /* Categories */
+        .categories {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--gold);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            position: relative;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 2rem;
+        }
+
+        .category-overlay h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 5%;
+            background: var(--secondary);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--primary);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .product-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-price .original {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 1rem;
+            margin-left: 10px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .add-to-cart:hover {
+            background: #ff6b6b;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--accent), #ff6b6b);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            padding: 4rem 5% 2rem;
+            border-top: 2px solid var(--accent);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: var(--primary);
+            z-index: 2000;
+            transition: right 0.3s;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            background: var(--secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--secondary);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-details h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-details p {
+            color: var(--gold);
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            background: var(--secondary);
+            border-top: 2px solid var(--accent);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #ff6b6b;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Checkout Modal */
+        .checkout-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .checkout-modal.open {
+            display: flex;
+        }
+
+        .checkout-form-container {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 2px solid var(--accent);
+        }
+
+        .checkout-form-container h2 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .payment-method {
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-method:hover, .payment-method.active {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .payment-method i {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .submit-order-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .submit-order-btn:hover {
+            background: #ff6b6b;
+        }
+
+        .close-checkout {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Receipt Page */
+        .receipt-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            z-index: 4000;
+            overflow-y: auto;
+        }
+
+        .receipt-page.open {
+            display: block;
+        }
+
+        .receipt-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: var(--secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 2px solid var(--accent);
+            position: relative;
+        }
+
+        .receipt-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 4rem;
+            color: rgba(255,255,255,0.05);
+            font-weight: bold;
+            pointer-events: none;
+        }
+
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+
+        .receipt-header h1 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .receipt-header p {
+            color: var(--text);
+        }
+
+        .receipt-details {
+            margin-bottom: 2rem;
+        }
+
+        .receipt-details h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .receipt-items {
+            margin-bottom: 2rem;
+        }
+
+        .receipt-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--primary);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .receipt-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .receipt-totals {
+            border-top: 2px solid var(--accent);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-row.final {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .receipt-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .receipt-actions button {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .print-btn {
+            background: var(--secondary);
+            color: white;
+            border: 1px solid var(--accent);
+        }
+
+        .continue-btn {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .checkout-form-container {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i>
+                IMPRNT
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#jackets">Jackets</a></li>
+                <li><a href="#shirts">Shirts</a></li>
+                <li><a href="#pants">Pants</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-user"></i>
+                <i class="fas fa-shopping-cart" onclick="toggleCart()">
+                    <span class="cart-count" id="cartCount">0</span>
+                </i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Imprnt</h1>
+            <p>Premium Fashion from Sialkot, Pakistan</p>
+            <a href="#products" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2 class="section-title">Our Collections</h2>
+        <div class="category-grid">
+            <div class="category-card" onclick="scrollToProducts('jackets')">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600" alt="Jackets">
+                <div class="category-overlay">
+                    <h3>Premium Jackets</h3>
+                    <p>Leather & Bomber Collection</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="scrollToProducts('shirts')">
+                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600" alt="Shirts">
+                <div class="category-overlay">
+                    <h3>Stylish Shirts</h3>
+                    <p>Formal & Casual Wear</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="scrollToProducts('pants')">
+                <img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600" alt="Pants">
+                <div class="category-overlay">
+                    <h3>Modern Pants</h3>
+                    <p>Jeans & Trousers</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="scrollToProducts('accessories')">
+                <img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600" alt="Accessories">
+                <div class="category-overlay">
+                    <h3>Accessories</h3>
+                    <p>Caps, Belts & More</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get exclusive offers and updates on new arrivals!</p>
+        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+            <input type="email" placeholder="Enter your email to subscribe" required id="emailInput">
+            <button type="submit">Subscribe Now</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Sialkot, Pakistan</p>
+                <p><i class="fas fa-phone"></i> +92 339 0149918</p>
+                <p><i class="fas fa-envelope"></i> imprnt.pk@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#jackets">Jackets</a>
+                <a href="#shirts">Shirts</a>
+                <a href="#pants">Pants</a>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p>Stay connected with Imprnt</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1ZgaqKkYJW/" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/crocoswear_1?igsh=a3Z4d3p4a3pzMmRy" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:imprnt.pk@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>About Imprnt</h3>
+                <p>Premium quality fashion brand based in Sialkot, Pakistan. We offer the finest jackets, shirts, pants and accessories with nationwide delivery.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Imprnt. All rights reserved. | Made with ❤️ in Sialkot, Pakistan</p>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: #666; margin-top: 2rem;">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">PKR 0</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-form-container">
+            <button class="close-checkout" onclick="closeCheckout()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Complete Your Order</h2>
+            <form id="checkoutForm" onsubmit="processOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="fullName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" required placeholder="+92 300 1234567">
+                </div>
+                <div class="form-group">
+                    <label>Shipping Address</label>
+                    <input type="text" name="address" required placeholder="Street address, city, postal code">
+                </div>
+                
+                <label style="display: block; margin-bottom: 0.5rem;">Payment Method</label>
+                <div class="payment-methods">
+                    <div class="payment-method active" onclick="selectPayment(this)">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <small>Cash on Delivery</small>
+                    </div>
+                    <div class="payment-method" onclick="selectPayment(this)">
+                        <i class="fas fa-credit-card"></i>
+                        <small>Card Payment</small>
+                    </div>
+                    <div class="payment-method" onclick="selectPayment(this)">
+                        <i class="fas fa-university"></i>
+                        <small>Bank Transfer</small>
+                    </div>
+                </div>
+
+                <div class="cart-total" style="margin-top: 1rem;">
+                    <span>Order Total:</span>
+                    <span id="checkoutTotal">PKR 0</span>
+                </div>
+
+                <button type="submit" class="submit-order-btn">
+                    Place Order & Get Receipt
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Receipt Page -->
+    <div class="receipt-page" id="receiptPage">
+        <div class="receipt-container">
+            <div class="receipt-watermark">PAID</div>
+            
+            <div class="receipt-header">
+                <h1><i class="fas fa-check-circle" style="color: #4CAF50;"></i> Thank You!</h1>
+                <p>Thank you for choosing us. Your order has been confirmed.</p>
+            </div>
+
+            <div class="receipt-details">
+                <h3>Order Details</h3>
+                <div class="detail-row">
+                    <span>Order Number:</span>
+                    <span id="receiptOrderNumber">#IMP-000001</span>
+                </div>
+                <div class="detail-row">
+                    <span>Date:</span>
+                    <span id="receiptDate">March 11, 2026</span>
+                </div>
+                <div class="detail-row">
+                    <span>Customer:</span>
+                    <span id="receiptCustomer">-</span>
+                </div>
+                <div class="detail-row">
+                    <span>Email:</span>
+                    <span id="receiptEmail">-</span>
+                </div>
+                <div class="detail-row">
+                    <span>Phone:</span>
+                    <span id="receiptPhone">-</span>
+                </div>
+                <div class="detail-row">
+                    <span>Shipping Address:</span>
+                    <span id="receiptAddress">-</span>
+                </div>
+            </div>
+
+            <div class="receipt-items">
+                <h3>Products Ordered</h3>
+                <div id="receiptItemsList">
+                    <!-- Items will be loaded here -->
+                </div>
+            </div>
+
+            <div class="receipt-totals">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="receiptSubtotal">PKR 0</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping:</span>
+                    <span>PKR 200</span>
+                </div>
+                <div class="total-row final">
+                    <span>Total:</span>
+                    <span id="receiptFinalTotal">PKR 0</span>
+                </div>
+            </div>
+
+            <div class="receipt-actions">
+                <button class="print-btn" onclick="printReceipt()">
+                    <i class="fas fa-print"></i> Print Receipt
+                </button>
+                <button class="continue-btn" onclick="closeReceipt()">
+                    Continue Shopping
+                </button>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem; color: #aaa;">
+                <p>A confirmation email has been sent to your email address.</p>
+                <p style="margin-top: 0.5rem;">For queries, contact us at <strong>imprnt.pk@gmail.com</strong> or <strong>+92 339 0149918</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Product Data - Fixed Cargo Pants Olive Image
+        const products = [
+            {
+                id: 1,
+                name: "Premium Leather Jacket",
+                category: "jackets",
+                price: 8500,
+                originalPrice: 12000,
+                image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600",
+                badge: "Hot"
+            },
+            {
+                id: 2,
+                name: "Bomber Jacket Black",
+                category: "jackets",
+                price: 6500,
+                originalPrice: 9000,
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600",
+                badge: "New"
+            },
+            {
+                id: 3,
+                name: "Denim Jacket Classic",
+                category: "jackets",
+                price: 5500,
+                originalPrice: 7500,
+                image: "https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?w=600",
+                badge: "Sale"
+            },
+            {
+                id: 4,
+                name: "Formal White Shirt",
+                category: "shirts",
+                price: 3500,
+                originalPrice: 5000,
+                image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600",
+                badge: "Best Seller"
+            },
+            {
+                id: 5,
+                name: "Casual Check Shirt",
+                category: "shirts",
+                price: 3200,
+                originalPrice: 4500,
+                image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600",
+                badge: "New"
+            },
+            {
+                id: 6,
+                name: "Slim Fit Jeans",
+                category: "pants",
+                price: 4500,
+                originalPrice: 6000,
+                image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600",
+                badge: "Popular"
+            },
+            {
+                id: 7,
+                name: "Chino Pants Beige",
+                category: "pants",
+                price: 4000,
+                originalPrice: 5500,
+                image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600",
+                badge: "New"
+            },
+            {
+                id: 8,
+                name: "Cargo Pants Olive",
+                category: "pants",
+                price: 4800,
+                originalPrice: 6500,
+                image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600",
+                badge: "Trending"
+            },
+            {
+                id: 9,
+                name: "Designer Cap",
+                category: "accessories",
+                price: 1500,
+                originalPrice: 2500,
+                image: "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600",
+                badge: "Sale"
+            },
+            {
+                id: 10,
+                name: "Leather Belt Brown",
+                category: "accessories",
+                price: 2000,
+                originalPrice: 3000,
+                image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600",
+                badge: "New"
+            },
+            {
+                id: 11,
+                name: "Winter Puffer Jacket",
+                category: "jackets",
+                price: 9500,
+                originalPrice: 14000,
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600",
+                badge: "Winter Special"
+            },
+            {
+                id: 12,
+                name: "Polo T-Shirt",
+                category: "shirts",
+                price: 2800,
+                originalPrice: 4000,
+                image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=600",
+                badge: "Classic"
+            }
+        ];
+
+        let cart = [];
+        let currentOrder = null;
+
+        // Load Products
+        function loadProducts() {
+            const grid = document.getElementById('productGrid');
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x400/1a1a2e/ffffff?text=${encodeURIComponent(product.name)}'">
+                        <span class="product-badge">${product.badge}</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">
+                            PKR ${product.price.toLocaleString()}
+                            <span class="original">PKR ${product.originalPrice.toLocaleString()}</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">
+                            <i class="fas fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCart();
+            toggleCart();
+            showNotification(`${product.name} added to cart!`);
+        }
+
+        // Update Cart
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutTotal = document.getElementById('checkoutTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #666; margin-top: 2rem;">Your cart is empty</p>';
+                cartCount.textContent = '0';
+                cartTotal.textContent = 'PKR 0';
+                if (checkoutTotal) checkoutTotal.textContent = 'PKR 0';
+                return;
+            }
+            
+            let total = 0;
+            let count = 0;
+            
+            cartItems.innerHTML = cart.map(item => {
+                total += item.price * item.quantity;
+                count += item.quantity;
+                return `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/80x80/1a1a2e/ffffff?text=${encodeURIComponent(item.name)}'">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>PKR ${item.price.toLocaleString()} x ${item.quantity}</p>
+                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: var(--accent); cursor: pointer; margin-top: 5px;">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            cartCount.textContent = count;
+            cartTotal.textContent = `PKR ${total.toLocaleString()}`;
+            if (checkoutTotal) checkoutTotal.textContent = `PKR ${total.toLocaleString()}`;
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        // Toggle Cart
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+        }
+
+        // Open Checkout
+        function openCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            document.getElementById('checkoutModal').classList.add('open');
+            updateCart();
+            toggleCart();
+        }
+
+        // Close Checkout
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('open');
+        }
+
+        // Select Payment Method
+        function selectPayment(element) {
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Process Order - NO WHATSAPP, Direct Receipt
+        function processOrder(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const orderData = {
+                fullName: formData.get('fullName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                items: [...cart],
+                orderNumber: 'IMP-' + Date.now().toString().slice(-6),
+                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                subtotal: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+            };
+            
+            currentOrder = orderData;
+            
+            // Send Email (Simulated)
+            console.log('Order confirmation email would be sent to:', orderData.email);
+            
+            // Show Receipt
+            showReceipt(orderData);
+            
+            // Clear Cart
+            cart = [];
+            updateCart();
+            closeCheckout();
+        }
+
+        // Show Receipt
+        function showReceipt(orderData) {
+            document.getElementById('receiptOrderNumber').textContent = '#' + orderData.orderNumber;
+            document.getElementById('receiptDate').textContent = orderData.date;
+            document.getElementById('receiptCustomer').textContent = orderData.fullName;
+            document.getElementById('receiptEmail').textContent = orderData.email;
+            document.getElementById('receiptPhone').textContent = orderData.phone;
+            document.getElementById('receiptAddress').textContent = orderData.address;
+            
+            const shipping = 200;
+            const total = orderData.subtotal + shipping;
+            
+            document.getElementById('receiptItemsList').innerHTML = orderData.items.map(item => `
+                <div class="receipt-item">
+                    <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/60x60/1a1a2e/ffffff?text=${encodeURIComponent(item.name)}'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: bold;">${item.name}</div>
+                        <div style="color: #aaa; font-size: 0.9rem;">Qty: ${item.quantity} x PKR ${item.price.toLocaleString()}</div>
+                    </div>
+                    <div style="font-weight: bold; color: var(--gold);">PKR ${(item.price * item.quantity).toLocaleString()}</div>
+                </div>
+            `).join('');
+            
+            document.getElementById('receiptSubtotal').textContent = 'PKR ' + orderData.subtotal.toLocaleString();
+            document.getElementById('receiptFinalTotal').textContent = 'PKR ' + total.toLocaleString();
+            
+            document.getElementById('receiptPage').classList.add('open');
+        }
+
+        // Close Receipt
+        function closeReceipt() {
+            document.getElementById('receiptPage').classList.remove('open');
+        }
+
+        // Print Receipt
+        function printReceipt() {
+            window.print();
+        }
+
+        // Newsletter Subscribe
+        function subscribeNewsletter(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            alert(`Thank you for subscribing! We will send updates to ${email}`);
+            document.getElementById('emailInput').value = '';
+        }
+
+        // Scroll to Products
+        function scrollToProducts(category) {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Show Notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--accent);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Initialize
+        window.onload = function() {
+            loadProducts();
+        };
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
